@@ -49,7 +49,7 @@ function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <a href="#hero" className="font-display text-xl font-bold tracking-tight text-foreground">
-          Hanse<span className="text-gradient">Web</span>
+          Webwerk<span className="text-gradient">Studio</span>
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
@@ -378,7 +378,7 @@ function UeberMich() {
         >
           <p className="text-sm text-primary font-medium tracking-widest uppercase mb-3">Über mich</p>
           <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
-            Der Kopf hinter <span className="text-gradient">HanseWeb.</span>
+            Der Kopf hinter <span className="text-gradient">WebwerkStudio.</span>
           </h2>
         </motion.div>
 
@@ -471,7 +471,7 @@ function CTA() {
             Eine Website, die verkauft, beginnt mit einem Gespräch. Kostenlos. Unverbindlich. Lass uns herausfinden, was für dich möglich ist.
           </p>
           <a
-            href="mailto:kontakt@hanseweb.de"
+            href="mailto:kontakt@webwerkstudio.de"
             className="group inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all glow-box"
           >
             Jetzt Beratung sichern
@@ -491,7 +491,7 @@ function Footer() {
           Hanse<span className="text-gradient">Web</span>
         </p>
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} HanseWeb. Alle Rechte vorbehalten.
+          © {new Date().getFullYear()} WebwerkStudio. Alle Rechte vorbehalten.
         </p>
       </div>
     </footer>
