@@ -307,7 +307,8 @@ function Pakete() {
             <div className="mb-2">
               <span className="font-display text-5xl font-bold">499 €</span>
             </div>
-            <p className="text-xs text-muted-foreground mb-6">Einmalige Zahlung · keine Folgekosten</p>
+            <p className="text-xs text-muted-foreground mb-1">Einmalige Zahlung</p>
+            <p className="text-xs text-muted-foreground mb-6">+ 20 €/Monat für Hosting & Wartung</p>
             <h3 className="font-display text-lg font-semibold mb-3">Starter</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Ideal für Selbstständige und kleine Betriebe, die professionell online auftreten wollen — ohne großen Aufwand. Du bekommst eine moderne, mobile-optimierte Einseite, die dein Unternehmen klar vorstellt, Vertrauen aufbaut und Kunden direkt zur Kontaktaufnahme bewegt.
@@ -352,7 +353,8 @@ function Pakete() {
             <div className="mb-2">
               <span className="font-display text-5xl font-bold">899 €</span>
             </div>
-            <p className="text-xs text-muted-foreground mb-6">Einmalige Zahlung · keine Folgekosten</p>
+            <p className="text-xs text-muted-foreground mb-1">Einmalige Zahlung</p>
+            <p className="text-xs text-muted-foreground mb-6">+ 20 €/Monat für Hosting & Wartung</p>
             <h3 className="font-display text-lg font-semibold mb-3">Business</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Für Unternehmen, die mehr brauchen als eine digitale Visitenkarte. Eine vollständige mehrseitige Website mit allen wichtigen Unterseiten — plus ein eingebettetes Buchungs- oder Reservierungssystem, damit deine Kunden direkt online einen Termin buchen können.
