@@ -504,9 +504,11 @@ function UeberMich() {
         >
           <div className="p-8 rounded-2xl bg-card border border-border">
             <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
-                <span className="font-display text-2xl font-bold text-primary">SC</span>
-              </div>
+              <img
+                src="/sean-lucas.png"
+                alt="Sean-Lucas Chahin"
+                className="w-16 h-16 rounded-2xl object-cover shrink-0"
+              />
               <div>
                 <h3 className="font-display text-2xl font-bold mb-1">Sean-Lucas Chahin</h3>
                 <p className="text-sm text-primary font-medium mb-4">Gründer & Webdesigner — 16 Jahre</p>
