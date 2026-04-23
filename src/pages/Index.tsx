@@ -11,7 +11,6 @@ import {
   Palette,
   Rocket,
   CheckCircle2,
-  Star,
   Menu,
   X,
 } from "lucide-react";
@@ -28,6 +27,7 @@ const fadeUp = {
 const navLinks = [
   { label: "Startseite", href: "#hero" },
   { label: "Leistungen", href: "#leistungen" },
+  { label: "Pakete", href: "#pakete" },
   { label: "Ablauf", href: "#ablauf" },
   { label: "Über mich", href: "#ueber" },
 ];
@@ -269,6 +269,137 @@ function Leistungen() {
   );
 }
 
+function Pakete() {
+  return (
+    <section id="pakete" className="py-24 md:py-32 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          custom={0}
+          className="text-center mb-16"
+        >
+          <p className="text-sm text-primary font-medium tracking-widest uppercase mb-3">Pakete</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
+            Transparente Preise.{" "}
+            <span className="text-gradient">Keine Überraschungen.</span>
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Du weißt von Anfang an, was dein Projekt kostet. Kein Stundensatz-Chaos, kein Nachverhandeln — nur klare Leistung zum fairen Festpreis.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            variants={fadeUp}
+            custom={1}
+            className="p-8 rounded-2xl bg-card border border-border flex flex-col"
+          >
+            <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-secondary/50 text-xs text-muted-foreground w-fit mb-6">
+              Für Einsteiger
+            </div>
+            <div className="mb-2">
+              <span className="font-display text-5xl font-bold">499 €</span>
+            </div>
+            <p className="text-xs text-muted-foreground mb-6">Einmalige Zahlung · keine Folgekosten</p>
+            <h3 className="font-display text-lg font-semibold mb-3">Starter</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              Ideal für Selbstständige und kleine Betriebe, die professionell online auftreten wollen — ohne großen Aufwand. Du bekommst eine moderne, mobile-optimierte Einseite, die dein Unternehmen klar vorstellt, Vertrauen aufbaut und Kunden direkt zur Kontaktaufnahme bewegt.
+            </p>
+            <p className="text-xs text-primary font-medium mb-6">
+              Perfekt für: Friseure · Bäcker · Handwerker · Coaches · Fotografen
+            </p>
+            <ul className="space-y-3 mb-8 flex-1">
+              {[
+                "Professionelle Einseite (Landing Page)",
+                "Mobil optimiert für alle Geräte",
+                "Kontaktformular integriert",
+                "Schnelle Ladezeit & SEO-Grundlage",
+                "Lieferung in 5–7 Werktagen",
+                "2 Korrekturschleifen inklusive",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#kontakt"
+              className="w-full py-3 rounded-xl border border-border text-center text-sm font-medium hover:bg-secondary/50 transition-all duration-300"
+            >
+              Jetzt anfragen
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            variants={fadeUp}
+            custom={2}
+            className="p-8 rounded-2xl bg-card border border-primary/40 flex flex-col glow-box"
+          >
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-xs text-primary font-medium w-fit mb-6">
+              Empfohlen
+            </div>
+            <div className="mb-2">
+              <span className="font-display text-5xl font-bold">899 €</span>
+            </div>
+            <p className="text-xs text-muted-foreground mb-6">Einmalige Zahlung · keine Folgekosten</p>
+            <h3 className="font-display text-lg font-semibold mb-3">Business</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              Für Unternehmen, die mehr brauchen als eine digitale Visitenkarte. Eine vollständige mehrseitige Website mit allen wichtigen Unterseiten — plus ein eingebettetes Buchungs- oder Reservierungssystem, damit deine Kunden direkt online einen Termin buchen können.
+            </p>
+            <p className="text-xs text-primary font-medium mb-6">
+              Perfekt für: Restaurants · Kosmetikstudios · Arztpraxen · Dienstleister
+            </p>
+            <ul className="space-y-3 mb-8 flex-1">
+              {[
+                "Mehrseitige Website (4–6 Seiten)",
+                "Buchungs- oder Reservierungssystem",
+                "Mobil optimiert für alle Geräte",
+                "Kontaktformular & Google Maps",
+                "Schnelle Ladezeit & SEO-Grundlage",
+                "Lieferung in 7–10 Werktagen",
+                "3 Korrekturschleifen inklusive",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-muted-foreground">
+                  <CheckCircle2 size={16} className="text-primary mt-0.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#kontakt"
+              className="w-full py-3 rounded-xl bg-primary text-primary-foreground text-center text-sm font-medium hover:bg-primary/90 transition-all duration-300"
+            >
+              Jetzt anfragen
+            </a>
+          </motion.div>
+        </div>
+
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={fadeUp}
+          custom={3}
+          className="text-center text-xs text-muted-foreground mt-10"
+        >
+          Alle Preise zzgl. gesetzlicher MwSt. · Individuelle Anfragen: kontakt@webwerkstudio.de
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
 function Ablauf() {
   const steps = [
     {
@@ -344,27 +475,6 @@ function Ablauf() {
 }
 
 function UeberMich() {
-  const reviews = [
-    {
-      name: "Markus H.",
-      role: "Geschäftsführer, Reinigungsservice Hamburg",
-      text: "Seit der neuen Website erhalten wir 3x mehr Anfragen als vorher. Professionell, schnell und auf den Punkt. Absolute Empfehlung.",
-      stars: 5,
-    },
-    {
-      name: "Julia S.",
-      role: "Inhaberin, Kosmetikstudio Lübeck",
-      text: "Ich war skeptisch wegen des jungen Alters — aber das Ergebnis hat mich umgehauen. Die Website sieht aus, als hätte sie eine teure Agentur gemacht.",
-      stars: 5,
-    },
-    {
-      name: "Thomas W.",
-      role: "Selbstständiger Berater",
-      text: "Endlich eine Website, die für mich arbeitet. Innerhalb der ersten Woche kamen drei neue Kundenanfragen. Sean versteht, was Unternehmer brauchen.",
-      stars: 5,
-    },
-  ];
-
   return (
     <section id="ueber" className="py-24 md:py-32 relative">
       <div className="max-w-6xl mx-auto px-6">
@@ -388,7 +498,7 @@ function UeberMich() {
           viewport={{ once: true, margin: "-40px" }}
           variants={fadeUp}
           custom={1}
-          className="max-w-3xl mx-auto mb-20"
+          className="max-w-3xl mx-auto"
         >
           <div className="p-8 rounded-2xl bg-card border border-border">
             <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -420,35 +530,6 @@ function UeberMich() {
             </div>
           </div>
         </motion.div>
-
-        {/* FIX: Hinweis dass es Beispielbewertungen sind */}
-        <p className="text-center text-xs text-muted-foreground mb-6 italic">
-          * Die folgenden Bewertungen sind beispielhafte Darstellungen. Echte Kundenstimmen folgen.
-        </p>
-        <div className="grid md:grid-cols-3 gap-5">
-          {reviews.map((r, i) => (
-            <motion.div
-              key={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-40px" }}
-              variants={fadeUp}
-              custom={i}
-              className="p-6 rounded-2xl bg-card border border-border"
-            >
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: r.stars }).map((_, j) => (
-                  <Star key={j} size={16} className="fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-4">„{r.text}"</p>
-              <div>
-                <p className="text-sm font-semibold">{r.name}</p>
-                <p className="text-xs text-muted-foreground">{r.role}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -514,6 +595,7 @@ export default function Index() {
       <main>
         <Hero />
         <Leistungen />
+        <Pakete />
         <Ablauf />
         <UeberMich />
         <CTA />
