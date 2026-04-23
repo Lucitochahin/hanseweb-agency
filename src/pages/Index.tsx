@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -498,8 +499,8 @@ function Footer() {
         </p>
         <div className="flex items-center gap-6 text-sm text-muted-foreground">
           <a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a>
-          <a href="/impressum" className="hover:text-foreground transition-colors">Impressum</a>
-          <a href="/datenschutz" className="hover:text-foreground transition-colors">Datenschutz</a>
+          <Link to="/impressum" className="hover:text-foreground transition-colors">Impressum</Link>
+          <Link to="/datenschutz" className="hover:text-foreground transition-colors">Datenschutz</Link>
         </div>
       </div>
     </footer>
