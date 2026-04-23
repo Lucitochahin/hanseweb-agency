@@ -39,6 +39,7 @@ export default function Datenschutz() {
             <p>
               Sean-Lucas Chahin<br />
               WebwerkStudio<br />
+              {/* TODO: Echte Adresse eintragen */}
               Beispielstraße 42<br />
               10115 Berlin<br />
               E-Mail: kontakt@webwerkstudio.de<br />
@@ -73,11 +74,33 @@ export default function Datenschutz() {
               Server-Log-Dateien erfasst werden.
             </p>
             <h3 className="font-semibold text-foreground mb-2">Kontaktaufnahme per E-Mail</h3>
-            <p>
+            <p className="mb-4">
               Wenn Sie uns per E-Mail kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden
               personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und
               verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung dieser Daten erfolgt
               auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
+            </p>
+            <h3 className="font-semibold text-foreground mb-2">Kontaktaufnahme per WhatsApp</h3>
+            <p className="mb-4">
+              Unsere Website bietet die Möglichkeit, uns über den Nachrichtendienst WhatsApp der Meta Platforms Ireland Ltd.,
+              4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland, zu kontaktieren. Wenn Sie uns über WhatsApp
+              kontaktieren, werden die von Ihnen mitgeteilten Daten (z.&nbsp;B. Name, Nachrichteninhalt) von WhatsApp verarbeitet.
+              Wir haben keinen Einfluss auf die Datenverarbeitung durch WhatsApp. Weitere Informationen finden Sie in der
+              Datenschutzerklärung von WhatsApp:{" "}
+              <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                https://www.whatsapp.com/legal/privacy-policy
+              </a>
+            </p>
+            <p className="mb-4">
+              Die Nutzung von WhatsApp erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) bzw. Art. 6 Abs. 1
+              lit. b DSGVO (Vertragsanbahnung). Bitte beachten Sie, dass bei der Nutzung von WhatsApp Daten in die USA
+              übertragen werden können.
+            </p>
+            <h3 className="font-semibold text-foreground mb-2">Kontaktaufnahme per Telefon</h3>
+            <p>
+              Wenn Sie uns per Telefon kontaktieren, werden die von Ihnen mitgeteilten Daten (Name, Telefonnummer, Inhalt
+              der Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Die Verarbeitung
+              dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
             </p>
           </section>
 

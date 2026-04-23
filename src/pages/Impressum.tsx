@@ -24,10 +24,11 @@ export default function Impressum() {
 
         <div className="space-y-10 text-muted-foreground text-sm leading-relaxed">
           <section>
-            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Angaben gemäß § 5 TMG</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Angaben gemäß § 5 DDG</h2>
             <p>
               Sean-Lucas Chahin<br />
               WebwerkStudio<br />
+              {/* TODO: Echte Adresse eintragen */}
               Beispielstraße 42<br />
               10115 Berlin
             </p>
@@ -42,7 +43,7 @@ export default function Impressum() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+            <h2 className="font-display text-xl font-semibold text-foreground mb-3">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
             <p>
               Sean-Lucas Chahin<br />
               Beispielstraße 42<br />

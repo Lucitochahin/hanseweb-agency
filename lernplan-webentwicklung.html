@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-Monats-Lernplan — Webentwicklung</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cover {
+    text-align: center;
+    padding: 80px 20px 60px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #222;
+  }
+
+  .cover h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+
+  .cover .gradient {
+    background: linear-gradient(135deg, #6366f1, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .cover .subtitle {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .cover .meta {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .month-header {
+    margin-top: 60px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #222;
+    page-break-before: always;
+  }
+
+  .month-header:first-of-type {
+    page-break-before: avoid;
+  }
+
+  .month-num {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6366f1;
+    margin-bottom: 6px;
+  }
+
+  .month-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .why-box {
+    background: #111;
+    border-left: 3px solid #6366f1;
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 16px;
+  }
+
+  .why-box h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6366f1;
+    margin-bottom: 8px;
+  }
+
+  .why-box p {
+    font-size: 14px;
+    color: #aaa;
+  }
+
+  .result-box {
+    background: #111;
+    border-left: 3px solid #22c55e;
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 32px;
+  }
+
+  .result-box h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #22c55e;
+    margin-bottom: 8px;
+  }
+
+  .result-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .result-box li {
+    font-size: 14px;
+    color: #aaa;
+    padding: 3px 0;
+  }
+
+  .result-box li::before {
+    content: "✓ ";
+    color: #22c55e;
+    font-weight: 700;
+  }
+
+  .week {
+    margin-bottom: 36px;
+  }
+
+  .week h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .week-badge {
+    font-size: 11px;
+    font-weight: 600;
+    background: #1a1a2e;
+    color: #6366f1;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: #111;
+    color: #888;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #222;
+  }
+
+  table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #1a1a1a;
+    color: #ccc;
+    vertical-align: top;
+  }
+
+  table td:first-child {
+    color: #888;
+    font-weight: 500;
+    white-space: nowrap;
+    width: 140px;
+  }
+
+  a {
+    color: #818cf8;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .project-box {
+    background: #0f0f1a;
+    border: 1px solid #1e1e3a;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0 24px;
+  }
+
+  .project-box h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .project-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project-box li {
+    font-size: 13px;
+    color: #aaa;
+    padding: 2px 0;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .project-box li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #6366f1;
+  }
+
+  .code-example {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #a78bfa;
+    margin: 12px 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  .schedule {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid #222;
+    page-break-before: always;
+  }
+
+  .schedule h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0 32px;
+  }
+
+  .resource-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .resource-card .name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .resource-card .lang {
+    font-size: 11px;
+    color: #6366f1;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .resource-card .desc {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .checklist {
+    margin-top: 40px;
+  }
+
+  .checklist h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .check-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .check-item span {
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  .daily-schedule {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px 20px;
+    align-items: center;
+    background: #111;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+
+  .time-label {
+    font-size: 13px;
+    color: #6366f1;
+    font-weight: 600;
+  }
+
+  .time-desc {
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  .time-dur {
+    font-size: 13px;
+    color: #888;
+    text-align: right;
+  }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    font-size: 13px;
+    color: #555;
+  }
+
+  @media print {
+    body { background: #fff; color: #222; padding: 20px; }
+    .cover h1 { color: #111; }
+    .cover .gradient { -webkit-text-fill-color: #6366f1; }
+    .month-header h2 { color: #111; }
+    .why-box, .result-box { background: #f8f8f8; }
+    .why-box p, .result-box li { color: #444; }
+    .project-box { background: #f5f5ff; border-color: #ddd; }
+    .project-box li { color: #444; }
+    table th { background: #f5f5f5; }
+    table td { color: #333; }
+    .resource-card { background: #f8f8f8; border-color: #eee; }
+    .resource-card .name { color: #111; }
+    .resource-card .desc { color: #555; }
+    .daily-schedule { background: #f8f8f8; }
+    .check-item span { color: #333; }
+    .week h3 { color: #111; }
+    .code-example { background: #f5f5f5; border-color: #ddd; }
+    a { color: #6366f1; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="cover">
+    <h1>6-Monats-Lernplan<br><span class="gradient">Webentwicklung</span></h1>
+    <p class="subtitle">Vom Website-Builder zum eigenständigen Web-Entwickler</p>
+    <p class="meta">Erstellt für Sean-Lucas Chahin — April 2026</p>
+  </div>
+
+  <!-- MONAT 1 -->
+  <div class="month-header">
+    <p class="month-num">Monat 1</p>
+    <h2>HTML & CSS — Die Sprache des Internets</h2>
+  </div>
+
+  <div class="why-box">
+    <h4>Warum du das brauchst</h4>
+    <p>Jede Website besteht aus HTML (Struktur) und CSS (Design). Deine aktuelle Website nutzt beides — aber durch Tailwind und Lovable hast du nie gelernt, wie es darunter funktioniert. Ohne dieses Fundament wirst du bei jedem Problem steckenbleiben und nicht wissen, warum etwas nicht aussieht wie gewollt.</p>
+  </div>
+
+  <div class="result-box">
+    <h4>Was du danach kannst</h4>
+    <ul>
+      <li>Jede Website von Grund auf bauen — ohne Tools, ohne Frameworks</li>
+      <li>Verstehen warum Tailwind-Klassen wie flex, rounded-2xl, py-8 funktionieren</li>
+      <li>Layouts bauen die auf Handy, Tablet und Desktop perfekt aussehen</li>
+      <li>Fehler im Design selbst finden und fixen</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 1–2</span> HTML & CSS Grundlagen</h3>
+    <table>
+      <tr><td>Kurs</td><td><a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/">freeCodeCamp — Responsive Web Design</a> (kostenlos, interaktiv, mit Zertifikat)</td></tr>
+      <tr><td>Dauer</td><td>~2 Stunden pro Tag</td></tr>
+      <tr><td>Was du lernst</td><td>HTML-Tags (div, section, header, nav, a, img), CSS Farben/Abstände/Schriften, Box-Modell (margin, padding, border), CSS-Selektoren</td></tr>
+      <tr><td>Zertifikat</td><td>Ja — kostenlos nach Abschluss der 5 Projekte</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Projekte die du baust</h4>
+      <ul>
+        <li>Tribute Page (einfache Info-Seite)</li>
+        <li>Survey Form (Formular mit Eingabefeldern)</li>
+        <li>Product Landing Page (genau wie deine WebwerkStudio-Seite)</li>
+        <li>Technical Documentation Page</li>
+        <li>Personal Portfolio</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 3</span> CSS Layouts: Flexbox & Grid</h3>
+    <table>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/playlist?list=PL4-IK0AVhVjOJs_UjdQeyEZ_cmEV3uJvx">Kevin Powell — HTML & CSS for Absolute Beginners</a></td></tr>
+      <tr><td>Was du lernst</td><td>Flexbox (wie flex, justify-center, items-center funktionieren), CSS Grid (für mehrspaltige Layouts wie deine Leistungen-Karten)</td></tr>
+      <tr><td>Warum K.P.</td><td>Weltweit anerkannter CSS-Experte. Erklärt nicht nur WAS sondern WARUM</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Pflicht-Übung</h4>
+      <ul>
+        <li>Öffne deine Index.tsx und finde jede Tailwind-Klasse</li>
+        <li>Schreibe daneben was sie in normalem CSS bedeutet</li>
+        <li>z.B.: py-8 = padding-top: 2rem; padding-bottom: 2rem;</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 4</span> Git & Terminal</h3>
+    <table>
+      <tr><td>Kurs</td><td><a href="https://www.theodinproject.com/lessons/foundations-introduction-to-git">The Odin Project — Git Basics</a> (3 Lektionen)</td></tr>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/watch?v=hwP7WQkmECE">Fireship — Git Explained in 100 Seconds</a> + <a href="https://www.youtube.com/watch?v=ecK3EnyGD8o">13 Advanced Git Tricks</a></td></tr>
+      <tr><td>Was du lernst</td><td>Commits, Branches, Merge, git add/commit/push/pull, Änderungen rückgängig machen</td></tr>
+      <tr><td>Warum wichtig</td><td>Genau das was wir heute gemacht haben. Ohne Git kein Deployment, keine Versionskontrolle</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Pflicht-Übung</h4>
+      <ul>
+        <li>Erstelle ein neues Repo auf GitHub</li>
+        <li>Mache 10 Commits mit verschiedenen Änderungen</li>
+        <li>Erstelle einen Branch, ändere etwas, merge es zurück</li>
+        <li>Wiederhole bis git push sich natürlich anfühlt</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MONAT 2 -->
+  <div class="month-header">
+    <p class="month-num">Monat 2</p>
+    <h2>JavaScript — Die Programmiersprache des Webs</h2>
+  </div>
+
+  <div class="why-box">
+    <h4>Warum du das brauchst</h4>
+    <p>JavaScript ist die einzige Programmiersprache die im Browser läuft. React ist JavaScript. Jeder Button-Klick, jede Animation, jede Logik — das ist JavaScript. Ohne JS-Grundlagen ist React wie Autofahren ohne zu wissen was Gas und Bremse sind.</p>
+  </div>
+
+  <div class="result-box">
+    <h4>Was du danach kannst</h4>
+    <ul>
+      <li>Verstehen was useState, useEffect, map(), const, => in deinem Code bedeuten</li>
+      <li>Eigene Logik programmieren (Formulare prüfen, Daten filtern)</li>
+      <li>Fehler im Code selbst finden und beheben</li>
+      <li>Die Grundlage für React, Node.js und alles weitere</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 5–6</span> JavaScript Basics</h3>
+    <table>
+      <tr><td>Kurs</td><td><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures-v8/">freeCodeCamp — JavaScript Algorithms</a> (kostenlos, ~300 Übungen)</td></tr>
+      <tr><td>Dauer</td><td>2 Stunden pro Tag</td></tr>
+      <tr><td>Was du lernst</td><td>Variablen (let, const), Datentypen, If/Else, Schleifen, Funktionen, Arrow-Functions (=>), Array-Methoden (map, filter, find)</td></tr>
+      <tr><td>Zertifikat</td><td>Ja — kostenlos</td></tr>
+    </table>
+    <p style="font-size:13px;color:#888;margin:12px 0 4px;">Konkretes Beispiel — dieser Code in deiner Website:</p>
+    <div class="code-example">{services.map((s, i) => (
+  &lt;motion.div key={i}&gt;
+    &lt;s.icon size={20} /&gt;
+    &lt;h3&gt;{s.title}&lt;/h3&gt;
+  &lt;/motion.div&gt;
+))}</div>
+    <p style="font-size:13px;color:#888;margin-bottom:20px;">Benutzt: Array.map(), Arrow-Functions, Destructuring, JSX. Nach diesem Monat verstehst du jede Zeile.</p>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 7–8</span> JavaScript im Browser (DOM)</h3>
+    <table>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/watch?v=y17RuWkWdn8">Web Dev Simplified — Learn DOM Manipulation in 18 Min</a></td></tr>
+      <tr><td>Deutsch</td><td><a href="https://mitmario.dev">Programmieren mit Mario</a> — Deutsche JS-Tutorials</td></tr>
+      <tr><td>Was du lernst</td><td>Wie JS HTML-Elemente findet und verändert, Event-Listener, wie Formulare funktionieren</td></tr>
+      <tr><td>Warum wichtig</td><td>Dein Navbar-Scroll-Effekt (window.addEventListener) ist genau das</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Pflicht-Projekt: To-Do-App (ohne React!)</h4>
+      <ul>
+        <li>Aufgaben hinzufügen, als erledigt markieren, löschen</li>
+        <li>Daten bleiben nach Neuladen erhalten (localStorage)</li>
+        <li>Nur HTML + CSS + JavaScript — kein Framework</li>
+        <li>Beweist: Du kannst eine Web-App komplett alleine bauen</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MONAT 3 -->
+  <div class="month-header">
+    <p class="month-num">Monat 3</p>
+    <h2>React — Das Framework hinter deiner Website</h2>
+  </div>
+
+  <div class="why-box">
+    <h4>Warum du das brauchst</h4>
+    <p>Deine komplette Website ist in React gebaut. React ist das meistgenutzte Frontend-Framework der Welt. Wenn du React verstehst, kannst du deine Website ändern, neue Features bauen, und für Kunden komplexere Projekte umsetzen.</p>
+  </div>
+
+  <div class="result-box">
+    <h4>Was du danach kannst</h4>
+    <ul>
+      <li>Deine eigene Index.tsx Zeile für Zeile verstehen und ändern</li>
+      <li>Neue Seiten und Komponenten selbst bauen</li>
+      <li>useState, useEffect, Props und Components erklären können</li>
+      <li>React-Apps von Null starten ohne Lovable/KI</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 9–10</span> React Grundlagen</h3>
+    <table>
+      <tr><td>Kurs</td><td><a href="https://react.dev/learn">React Offizielle Docs — Learn React</a> (interaktiv, kostenlos)</td></tr>
+      <tr><td>Was du lernst</td><td>Components, Props, State (useState), Events (onClick), Conditional Rendering, Listen rendern (.map())</td></tr>
+      <tr><td>Methode</td><td>Lies ein Kapitel → Mache die Übungen → Finde das Konzept in deiner Index.tsx</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Tag-1-Übung: Analysiere deinen eigenen Code</h4>
+      <ul>
+        <li>Wie viele Components hat die Seite? (Navbar, Hero, Leistungen, Pakete, Ablauf, UeberMich, CTA, Footer)</li>
+        <li>Wo wird useState benutzt und warum?</li>
+        <li>Was macht useEffect in der Navbar?</li>
+        <li>Warum steht überall motion.div statt div?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 11–12</span> React Praxis-Projekt</h3>
+    <table>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/c/WebDevSimplified">Web Dev Simplified — React Full Course</a></td></tr>
+      <tr><td>Deutsch</td><td><a href="https://webdev1x1.de">WebDev 1x1</a> — React-Tutorials</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Pflicht-Projekt: Notiz-App mit React</h4>
+      <ul>
+        <li>Notizen erstellen, bearbeiten, löschen</li>
+        <li>Suche und Filterung</li>
+        <li>Kategorien / Tags</li>
+        <li>Daten in localStorage speichern</li>
+        <li>Komplett ohne KI — nur du und die React-Docs</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MONAT 4 -->
+  <div class="month-header">
+    <p class="month-num">Monat 4</p>
+    <h2>Tailwind CSS & TypeScript — Deine Tools meistern</h2>
+  </div>
+
+  <div class="why-box">
+    <h4>Warum du das brauchst</h4>
+    <p>Du benutzt Tailwind und TypeScript bereits — aber ohne sie wirklich zu verstehen. Das ist wie mit einer Profi-Kamera fotografieren, aber nur den Automatikmodus nutzen. Wenn du diese Tools beherrschst, baust du doppelt so schnell und machst halb so viele Fehler.</p>
+  </div>
+
+  <div class="result-box">
+    <h4>Was du danach kannst</h4>
+    <ul>
+      <li>Tailwind-Layouts in Sekunden bauen statt in Minuten</li>
+      <li>TypeScript-Fehler verstehen und fixen</li>
+      <li>Type-safe Code schreiben (weniger Bugs)</li>
+      <li>Eigene Tailwind-Konfigurationen erstellen</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 13–14</span> Tailwind CSS meistern</h3>
+    <table>
+      <tr><td>Docs</td><td><a href="https://tailwindcss.com/docs">Tailwind CSS Documentation</a> — systematisch durcharbeiten</td></tr>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/watch?v=mr15Xzb1Ook">Fireship — Tailwind in 100 Seconds</a></td></tr>
+      <tr><td>Was du lernst</td><td>Utility-System, Responsive Design (md:, lg:), Dark Mode, Custom Config, Animations</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Pflicht-Übung</h4>
+      <ul>
+        <li>Baue deine WebwerkStudio Startseite komplett von Null</li>
+        <li>Vite + React + Tailwind — kein Kopieren, aus dem Gedächtnis</li>
+        <li>Ziel: unter 3 Stunden fertig</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 15–16</span> TypeScript</h3>
+    <table>
+      <tr><td>Docs</td><td><a href="https://www.typescriptlang.org/docs/handbook/2/basic-types.html">TypeScript Handbook — The Basics</a></td></tr>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/watch?v=zQnBQ4tB3ZA">Fireship — TypeScript in 100 Seconds</a> + Web Dev Simplified Full Course</td></tr>
+      <tr><td>Was du lernst</td><td>Warum (i: number) in deinem Code steht, interface/type, wie TS Bugs verhindert</td></tr>
+      <tr><td>Warum wichtig</td><td>Deine Website ist TypeScript (.tsx). Jede Editor-Fehlermeldung kommt von TS</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Pflicht-Übung</h4>
+      <ul>
+        <li>Konvertiere deine Notiz-App aus Monat 3 zu TypeScript</li>
+        <li>Füge Types für jede Notiz, jeden Prop und jeden State hinzu</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MONAT 5 -->
+  <div class="month-header">
+    <p class="month-num">Monat 5</p>
+    <h2>Backend, APIs & Deployment</h2>
+  </div>
+
+  <div class="why-box">
+    <h4>Warum du das brauchst</h4>
+    <p>Bisher baust du nur das Frontend. Aber echte Websites brauchen: Kontaktformulare die E-Mails senden, Datenbanken, Buchungssysteme. Außerdem musst du Deployment verstehen — damit du nicht bei jedem Update auf Hilfe angewiesen bist.</p>
+  </div>
+
+  <div class="result-box">
+    <h4>Was du danach kannst</h4>
+    <ul>
+      <li>Verstehen wie Frontend und Backend zusammenarbeiten</li>
+      <li>Ein Kontaktformular bauen das wirklich E-Mails verschickt</li>
+      <li>APIs erstellen und nutzen</li>
+      <li>Websites professionell deployen mit Auto-Update bei jedem Push</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 17–18</span> Node.js & Backend Basics</h3>
+    <table>
+      <tr><td>Kurs</td><td><a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs">The Odin Project — NodeJS</a> (erste 6 Lektionen)</td></tr>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/c/TraversyMedia">Traversy Media — Node.js Crash Course</a></td></tr>
+      <tr><td>Was du lernst</td><td>Was ein Server ist, HTTP-Requests (GET, POST), wie APIs funktionieren, Express.js</td></tr>
+      <tr><td>Warum wichtig</td><td>Für das Buchungssystem in deinem Business-Paket brauchst du Backend-Wissen</td></tr>
+    </table>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 19–20</span> Deployment & DevOps</h3>
+    <table>
+      <tr><td>YouTube</td><td><a href="https://www.youtube.com/watch?v=scEDHsr3APg">Fireship — CI/CD in 100 Seconds</a></td></tr>
+      <tr><td>Was du lernst</td><td>Automatisches Deployment (Push = Live), Domain-Setup, SSL, Environment Variables</td></tr>
+      <tr><td>Warum wichtig</td><td>Genau das was wir heute manuell gemacht haben — nach dieser Woche machst du es im Schlaf</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Pflicht-Übung</h4>
+      <ul>
+        <li>GitHub Repo → Netlify Auto-Deploy einrichten</li>
+        <li>Eigene Domain verbinden</li>
+        <li>Kontaktformular mit Netlify Forms oder Formspree einbauen</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MONAT 6 -->
+  <div class="month-header">
+    <p class="month-num">Monat 6</p>
+    <h2>Meisterstück — Alles zusammenbringen</h2>
+  </div>
+
+  <div class="why-box">
+    <h4>Warum du das brauchst</h4>
+    <p>Tutorials machen dich nicht zum Entwickler. Eigene Projekte schon. Dieser Monat ist der wichtigste — hier beweist du dir selbst, dass du es kannst.</p>
+  </div>
+
+  <div class="result-box">
+    <h4>Was du danach kannst</h4>
+    <ul>
+      <li>Eine komplette professionelle Website für einen Kunden bauen — alleine, ohne KI</li>
+      <li>Den gesamten Prozess: Planung → Code → Design → Deployment</li>
+      <li>Selbstbewusst sagen: "Ich bin Webentwickler"</li>
+    </ul>
+  </div>
+
+  <div class="week">
+    <h3><span class="week-badge">Woche 21–24</span> Abschlussprojekt</h3>
+    <table>
+      <tr><td>Tech-Stack</td><td>React + TypeScript + Tailwind + Vite</td></tr>
+      <tr><td>Umfang</td><td>Mindestens 4 Seiten (Start, Über uns, Leistungen, Kontakt)</td></tr>
+      <tr><td>Features</td><td>Responsive, Animations, Kontaktformular, SEO, Impressum/Datenschutz</td></tr>
+      <tr><td>Deployment</td><td>GitHub → Netlify mit Auto-Deploy</td></tr>
+      <tr><td>Regel</td><td>KEINE KI-Hilfe. Nur Docs, YouTube, StackOverflow</td></tr>
+    </table>
+    <div class="project-box">
+      <h4>Woche 23–24: Portfolio & Polishing</h4>
+      <ul>
+        <li>Lighthouse Score > 90 auf allen Kategorien</li>
+        <li>3–4 Projekte im Portfolio zeigen</li>
+        <li>GitHub Profil aufräumen (README für jedes Projekt)</li>
+        <li>LinkedIn / eigene Website updaten</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAGESSTRUKTUR -->
+  <div class="schedule">
+    <h2>Empfohlene Tagesstruktur</h2>
+    <div class="daily-schedule">
+      <span class="time-label">Lernen</span>
+      <span class="time-desc">Kurs oder Tutorial durcharbeiten</span>
+      <span class="time-dur">30 min</span>
+      <span class="time-label">Üben</span>
+      <span class="time-desc">Selbst coden, Aufgaben lösen</span>
+      <span class="time-dur">45 min</span>
+      <span class="time-label">Review</span>
+      <span class="time-desc">Eigenen Code von gestern nochmal lesen</span>
+      <span class="time-dur">15 min</span>
+      <span class="time-label" style="color:#22c55e;">Gesamt</span>
+      <span class="time-desc" style="color:#fff;font-weight:600;">Pro Tag</span>
+      <span class="time-dur" style="color:#22c55e;font-weight:700;">90 min</span>
+    </div>
+    <p style="font-size:13px;color:#888;margin-top:8px;">Am Wochenende: Projekte bauen (2–3 Stunden)</p>
+
+    <h2 style="margin-top:40px;">Deine Ressourcen-Bibliothek</h2>
+    <div class="resource-grid">
+      <div class="resource-card">
+        <p class="name">freeCodeCamp</p>
+        <p class="lang">Englisch — Kostenlos</p>
+        <p class="desc"><a href="https://www.freecodecamp.org">freecodecamp.org</a> — Interaktive Kurse mit Zertifikaten</p>
+      </div>
+      <div class="resource-card">
+        <p class="name">The Odin Project</p>
+        <p class="lang">Englisch — Kostenlos</p>
+        <p class="desc"><a href="https://www.theodinproject.com">theodinproject.com</a> — Vollständiger Lehrplan</p>
+      </div>
+      <div class="resource-card">
+        <p class="name">React Docs</p>
+        <p class="lang">Englisch — Kostenlos</p>
+        <p class="desc"><a href="https://react.dev/learn">react.dev/learn</a> — Offizielle React-Tutorials</p>
+      </div>
+      <div class="resource-card">
+        <p class="name">Programmieren mit Mario</p>
+        <p class="lang">Deutsch — Kostenlos</p>
+        <p class="desc"><a href="https://mitmario.dev">mitmario.dev</a> — Deutsche Web-Dev Tutorials</p>
+      </div>
+      <div class="resource-card">
+        <p class="name">Kevin Powell</p>
+        <p class="lang">YouTube — Kostenlos</p>
+        <p class="desc">CSS-Spezialist, bester CSS-Lehrer auf YouTube</p>
+      </div>
+      <div class="resource-card">
+        <p class="name">Fireship</p>
+        <p class="lang">YouTube — Kostenlos</p>
+        <p class="desc">Kurze, knackige Tech-Erklärungen (100 Seconds Serie)</p>
+      </div>
+      <div class="resource-card">
+        <p class="name">Web Dev Simplified</p>
+        <p class="lang">YouTube — Kostenlos</p>
+        <p class="desc">React & JavaScript ausführlich erklärt</p>
+      </div>
+      <div class="resource-card">
+        <p class="name">Traversy Media</p>
+        <p class="lang">YouTube — Kostenlos</p>
+        <p class="desc">Fullstack-Tutorials und Crash Courses</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLISTE -->
+  <div class="checklist">
+    <h2>Abschluss-Checkliste</h2>
+    <p style="font-size:14px;color:#888;margin-bottom:20px;">Nach 6 Monaten solltest du jede Frage mit Ja beantworten können:</p>
+    <div class="check-item"><div class="check-box"></div><span>Kann ich eine Website von Null bauen ohne Lovable/KI?</span></div>
+    <div class="check-item"><div class="check-box"></div><span>Verstehe ich jeden Befehl im Terminal den ich tippe?</span></div>
+    <div class="check-item"><div class="check-box"></div><span>Kann ich meinen eigenen Index.tsx Code Zeile für Zeile erklären?</span></div>
+    <div class="check-item"><div class="check-box"></div><span>Kann ich ein Git-Repo erstellen, branchen, mergen und pushen?</span></div>
+    <div class="check-item"><div class="check-box"></div><span>Kann ich ein Tailwind-Layout in unter 30 Minuten bauen?</span></div>
+    <div class="check-item"><div class="check-box"></div><span>Kann ich TypeScript-Fehlermeldungen lesen und verstehen?</span></div>
+    <div class="check-item"><div class="check-box"></div><span>Kann ich eine Website auf Netlify deployen — ohne Hilfe?</span></div>
+    <div class="check-item"><div class="check-box"></div><span>Habe ich 3+ eigene Projekte auf GitHub die ich zeigen kann?</span></div>
+  </div>
+
+  <div class="footer-note">
+    <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;color:#6366f1;">Die goldene Regel</p>
+    <p>Für jede Stunde Tutorial die du schaust, solltest du zwei Stunden selbst coden.<br>Tutorials allein machen dich nicht zum Entwickler — eigene Projekte schon.</p>
+    <p style="margin-top:24px;font-size:12px;">Erstellt am 24. April 2026</p>
+  </div>
+
+</div>
+</body>
+</html>
