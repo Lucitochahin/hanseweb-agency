@@ -152,7 +152,7 @@ function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
           <a
-            href="#kontakt"
+            href="mailto:kontakt@webwerkstudio.de?subject=Anfrage%20%C3%BCber%20WebwerkStudio&body=Hallo%20Sean-Lucas%2C%0A%0Aich%20habe%20Ihre%20Website%20gesehen%20und%20interessiere%20mich%20f%C3%BCr%20ein%20Webdesign-Projekt.%0A%0ABitte%20kontaktieren%20Sie%20mich%20f%C3%BCr%20ein%20unverbindliches%20Beratungsgespr%C3%A4ch.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A"
             className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-all glow-box"
           >
             Jetzt Beratung sichern
@@ -473,7 +473,7 @@ function CTA() {
             Eine Website, die verkauft, beginnt mit einem Gespräch. Kostenlos. Unverbindlich. Lass uns herausfinden, was für dich möglich ist.
           </p>
           <a
-            href="mailto:kontakt@webwerkstudio.de"
+            href="mailto:kontakt@webwerkstudio.de?subject=Anfrage%20%C3%BCber%20WebwerkStudio&body=Hallo%20Sean-Lucas%2C%0A%0Aich%20habe%20Ihre%20Website%20gesehen%20und%20interessiere%20mich%20f%C3%BCr%20ein%20Webdesign-Projekt.%0A%0ABitte%20kontaktieren%20Sie%20mich%20f%C3%BCr%20ein%20unverbindliches%20Beratungsgespr%C3%A4ch.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A"
             rel="noopener noreferrer"
             className="group inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-lg hover:opacity-90 transition-all glow-box"
           >
