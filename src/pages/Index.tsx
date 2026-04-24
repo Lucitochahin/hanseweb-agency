@@ -599,6 +599,7 @@ function Footer() {
         </p>
         <div className="flex items-center gap-6 text-sm text-muted-foreground">
           <a href="#kontakt" className="hover:text-foreground transition-colors">Kontakt</a>
+          <Link to="/referenzen" className="hover:text-foreground transition-colors">Referenzen</Link>
           <Link to="/impressum" className="hover:text-foreground transition-colors">Impressum</Link>
           <Link to="/datenschutz" className="hover:text-foreground transition-colors">Datenschutz</Link>
         </div>
