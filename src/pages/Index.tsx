@@ -30,6 +30,7 @@ const navLinks = [
   { label: "Leistungen", href: "#leistungen" },
   { label: "Pakete", href: "#pakete" },
   { label: "Ablauf", href: "#ablauf" },
+  { label: "Referenzen", href: "/referenzen" },
   { label: "Über mich", href: "#ueber" },
 ];
 
@@ -54,15 +55,25 @@ function Navbar() {
           Webwerk<span className="text-gradient">Studio</span>
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-base text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                className="text-base text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-base text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <a
             href="#kontakt"
             className="px-6 py-3 rounded-lg bg-primary text-primary-foreground text-base font-medium hover:opacity-90 transition-opacity"
@@ -83,16 +94,27 @@ function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden glass mt-2 mx-4 rounded-xl p-6 flex flex-col gap-4"
         >
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              className="text-foreground text-base"
-            >
-              {l.label}
-            </a>
-          ))}
+          {navLinks.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-foreground text-base"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-foreground text-base"
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <a
             href="#kontakt"
             onClick={() => setMobileOpen(false)}
@@ -477,6 +499,106 @@ function Ablauf() {
   );
 }
 
+function ReferenzenPreview() {
+  const previews = [
+    {
+      name: "Restaurant Goldener Hirsch",
+      desc: "Website mit Reservierungssystem und Speisekarte.",
+      tags: ["Business-Paket", "Buchungssystem"],
+      gradient: "from-amber-500/20 via-orange-500/10 to-red-500/20",
+    },
+    {
+      name: "Friseur Salon Eleganz",
+      desc: "Einseite mit Online-Terminbuchung und Galerie.",
+      tags: ["Starter-Paket", "Kontaktformular"],
+      gradient: "from-pink-500/20 via-purple-500/10 to-violet-500/20",
+    },
+    {
+      name: "Handwerk Müller & Söhne",
+      desc: "Unternehmensseite mit Leistungsübersicht und Angebotsanfrage.",
+      tags: ["Business-Paket", "SEO"],
+      gradient: "from-blue-500/20 via-cyan-500/10 to-teal-500/20",
+    },
+  ];
+
+  return (
+    <section id="referenzen" className="py-24 md:py-32 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          custom={0}
+          className="text-center mb-16"
+        >
+          <p className="text-sm text-primary font-medium tracking-widest uppercase mb-3">Portfolio</p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
+            Projekte, die <span className="text-gradient">überzeugen.</span>
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            Ein Auszug aus bisherigen Projekten — jedes einzelne mit dem Anspruch, echte Ergebnisse zu liefern.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {previews.map((project, i) => (
+            <motion.div
+              key={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={fadeUp}
+              custom={i + 1}
+              className="group rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden hover:glow-box"
+            >
+              <div
+                className={`h-36 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
+              >
+                <span className="font-display text-sm font-semibold text-foreground/60">
+                  {project.name}
+                </span>
+              </div>
+              <div className="p-5">
+                <h3 className="font-display text-base font-semibold mb-1">{project.name}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">{project.desc}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 rounded-full border border-border bg-secondary/50 text-xs text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={fadeUp}
+          custom={4}
+          className="text-center mt-10"
+        >
+          <Link
+            to="/referenzen"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border text-foreground font-medium text-base hover:bg-secondary transition-colors"
+          >
+            Alle Referenzen ansehen
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function UeberMich() {
   return (
     <section id="ueber" className="py-24 md:py-32 relative">
@@ -617,6 +739,7 @@ export default function Index() {
         <Leistungen />
         <Pakete />
         <Ablauf />
+        <ReferenzenPreview />
         <UeberMich />
         <CTA />
       </main>
