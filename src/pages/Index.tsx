@@ -50,7 +50,7 @@ function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#hero" className="font-display text-xl font-bold tracking-tight text-foreground">
+        <a href="#hero" className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
           Webwerk<span className="text-gradient">Studio</span>
         </a>
         <div className="hidden md:flex items-center gap-8">
@@ -58,14 +58,14 @@ function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-base text-muted-foreground hover:text-foreground transition-colors"
             >
               {l.label}
             </a>
           ))}
           <a
             href="#kontakt"
-            className="px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+            className="px-6 py-3 rounded-lg bg-primary text-primary-foreground text-base font-medium hover:opacity-90 transition-opacity"
           >
             Beratung sichern
           </a>
@@ -306,7 +306,7 @@ function Pakete() {
               Für Einsteiger
             </div>
             <div className="mb-2">
-              <span className="font-display text-5xl font-bold">499 €</span>
+              <span className="font-display text-5xl font-bold">449 €</span>
             </div>
             <p className="text-xs text-muted-foreground mb-1">Einmalige Zahlung</p>
             <p className="text-xs text-muted-foreground mb-6">+ 20 €/Monat für Hosting & Wartung</p>
@@ -352,7 +352,7 @@ function Pakete() {
               Empfohlen
             </div>
             <div className="mb-2">
-              <span className="font-display text-5xl font-bold">899 €</span>
+              <span className="font-display text-5xl font-bold">849 €</span>
             </div>
             <p className="text-xs text-muted-foreground mb-1">Einmalige Zahlung</p>
             <p className="text-xs text-muted-foreground mb-6">+ 20 €/Monat für Hosting & Wartung</p>
