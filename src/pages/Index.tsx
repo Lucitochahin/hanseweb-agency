@@ -283,7 +283,7 @@ function Leistungen() {
                 <s.icon size={20} className="text-primary" />
               </div>
               <h3 className="font-display text-lg font-semibold mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -333,7 +333,7 @@ function Pakete() {
             <p className="text-xs text-muted-foreground mb-1">Einmalige Zahlung</p>
             <p className="text-xs text-muted-foreground mb-6">+ 20 €/Monat für Hosting & Wartung</p>
             <h3 className="font-display text-lg font-semibold mb-3">Starter</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+            <p className="text-base text-muted-foreground leading-relaxed mb-4">
               Ideal für Selbstständige und kleine Betriebe, die professionell online auftreten wollen — ohne großen Aufwand. Du bekommst eine moderne, mobile-optimierte Einseite, die dein Unternehmen klar vorstellt, Vertrauen aufbaut und Kunden direkt zur Kontaktaufnahme bewegt.
             </p>
             <p className="text-xs text-primary font-medium mb-6">
@@ -379,7 +379,7 @@ function Pakete() {
             <p className="text-xs text-muted-foreground mb-1">Einmalige Zahlung</p>
             <p className="text-xs text-muted-foreground mb-6">+ 20 €/Monat für Hosting & Wartung</p>
             <h3 className="font-display text-lg font-semibold mb-3">Business</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+            <p className="text-base text-muted-foreground leading-relaxed mb-4">
               Für Unternehmen, die mehr brauchen als eine digitale Visitenkarte. Eine vollständige mehrseitige Website mit allen wichtigen Unterseiten — plus ein eingebettetes Buchungs- oder Reservierungssystem, damit deine Kunden direkt online einen Termin buchen können.
             </p>
             <p className="text-xs text-primary font-medium mb-6">
@@ -485,7 +485,7 @@ function Ablauf() {
                 {step.num}
               </span>
               <h3 className="font-display text-xl font-semibold mb-2">{step.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+              <p className="text-base text-muted-foreground leading-relaxed">{step.desc}</p>
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-8 -right-3 w-6 text-border">
                   <ArrowRight size={20} />
@@ -562,7 +562,7 @@ function ReferenzenPreview() {
               </div>
               <div className="p-5">
                 <h3 className="font-display text-base font-semibold mb-1">{project.name}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-3">{project.desc}</p>
+                <p className="text-base text-muted-foreground leading-relaxed mb-3">{project.desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <span
@@ -630,12 +630,12 @@ function UeberMich() {
               <img
                 src="/sean-lucas.png"
                 alt="Sean-Lucas Chahin"
-                className="w-16 h-16 rounded-2xl object-cover shrink-0"
+                className="w-36 h-36 rounded-2xl object-cover shrink-0"
               />
               <div>
                 <h3 className="font-display text-2xl font-bold mb-1">Sean-Lucas Chahin</h3>
-                <p className="text-sm text-primary font-medium mb-4">Gründer & Webdesigner — 16 Jahre</p>
-                <div className="space-y-3 text-muted-foreground text-sm leading-relaxed">
+                <p className="text-base text-primary font-medium mb-4">Gründer & Webdesigner — 16 Jahre</p>
+                <div className="space-y-3 text-muted-foreground text-base leading-relaxed">
                   <p>
                     Was andere in meinem Alter als Hobby betreiben, ist für mich Berufung. Seit Jahren
                     beschäftige ich mich intensiv mit Webdesign, UX und digitalem Marketing. Nicht
