@@ -34,59 +34,17 @@ const navLinks = [
   { label: "Referenzen", href: "/referenzen" },
   { label: "Über mich", href: "#ueber" },
 ];
-
 function ZoomSchedulerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      window.open("https://scheduler.zoom.us/sean-lucas-chahin", "_blank");
+      onClose();
     }
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
+  }, [open, onClose]);
 
-  return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
-          onClick={onClose}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative w-full max-w-2xl bg-card rounded-2xl overflow-hidden shadow-2xl border border-border"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-secondary/30">
-              <div className="flex items-center gap-2">
-                <Calendar size={18} className="text-primary" />
-                <span className="font-display font-semibold text-base">Beratungstermin buchen</span>
-              </div>
-              <button
-                onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
-              >
-                <X size={18} />
-              </button>
-            </div>
-            <iframe
-              src="https://scheduler.zoom.us/sean-lucas-chahin"
-              style={{ width: "100%", height: "560px", border: "none" }}
-              title="Beratung buchen"
-              allow="camera; microphone"
-            />
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  return null;
 }
+
 
 function Navbar({ onBooking }: { onBooking: () => void }) {
   const [scrolled, setScrolled] = useState(false);
