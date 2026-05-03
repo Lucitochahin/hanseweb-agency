@@ -37,7 +37,7 @@ const navLinks = [
 function ZoomSchedulerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   useEffect(() => {
     if (open) {
-      window.open("https://scheduler.zoom.us/sean-lucas-chahin", "_blank");
+      window.open("https://scheduler.zoom.us/sean-lucas-chahin-hksboq/30-minuten-mit-sean-lucas", "_blank");
       onClose();
     }
   }, [open, onClose]);
