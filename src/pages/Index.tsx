@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Globe,
@@ -14,6 +14,7 @@ import {
   Phone,
   Menu,
   X,
+  Calendar,
 } from "lucide-react";
 
 const fadeUp = {
@@ -34,7 +35,60 @@ const navLinks = [
   { label: "Über mich", href: "#ueber" },
 ];
 
-function Navbar() {
+function ZoomSchedulerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="relative w-full max-w-2xl bg-card rounded-2xl overflow-hidden shadow-2xl border border-border"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-secondary/30">
+              <div className="flex items-center gap-2">
+                <Calendar size={18} className="text-primary" />
+                <span className="font-display font-semibold text-base">Beratungstermin buchen</span>
+              </div>
+              <button
+                onClick={onClose}
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <iframe
+              src="https://scheduler.zoom.us/sean-lucas-chahin"
+              style={{ width: "100%", height: "560px", border: "none" }}
+              title="Beratung buchen"
+              allow="camera; microphone"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+function Navbar({ onBooking }: { onBooking: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -74,12 +128,12 @@ function Navbar() {
               </a>
             )
           )}
-          <a
-            href="#kontakt"
+          <button
+            onClick={onBooking}
             className="px-6 py-3 rounded-lg bg-primary text-primary-foreground text-base font-medium hover:opacity-90 transition-opacity"
           >
             Beratung sichern
-          </a>
+          </button>
         </div>
         <button
           className="md:hidden text-foreground"
@@ -115,20 +169,19 @@ function Navbar() {
               </a>
             )
           )}
-          <a
-            href="#kontakt"
-            onClick={() => setMobileOpen(false)}
+          <button
+            onClick={() => { setMobileOpen(false); onBooking(); }}
             className="px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium text-center"
           >
             Beratung sichern
-          </a>
+          </button>
         </motion.div>
       )}
     </nav>
   );
 }
 
-function Hero() {
+function Hero({ onBooking }: { onBooking: () => void }) {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
@@ -175,13 +228,13 @@ function Hero() {
           custom={3}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <a
-            href="mailto:kontakt@webwerkstudio.de?subject=Anfrage%20%C3%BCber%20WebwerkStudio&body=Hallo%20Sean-Lucas%2C%0A%0Aich%20habe%20Ihre%20Website%20gesehen%20und%20interessiere%20mich%20f%C3%BCr%20ein%20Webdesign-Projekt.%0A%0ABitte%20kontaktieren%20Sie%20mich%20f%C3%BCr%20ein%20unverbindliches%20Beratungsgespr%C3%A4ch.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A"
+          <button
+            onClick={onBooking}
             className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-all glow-box"
           >
             Jetzt Beratung sichern
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          </button>
           <a
             href="#leistungen"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border text-foreground font-medium text-base hover:bg-secondary transition-colors"
@@ -292,7 +345,7 @@ function Leistungen() {
   );
 }
 
-function Pakete() {
+function Pakete({ onBooking }: { onBooking: () => void }) {
   return (
     <section id="pakete" className="py-24 md:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
@@ -354,12 +407,12 @@ function Pakete() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#kontakt"
+            <button
+              onClick={onBooking}
               className="w-full py-3 rounded-xl border border-border text-center text-sm font-medium hover:bg-secondary/50 transition-all duration-300"
             >
               Jetzt anfragen
-            </a>
+            </button>
           </motion.div>
 
           <motion.div
@@ -401,12 +454,12 @@ function Pakete() {
                 </li>
               ))}
             </ul>
-            <a
-              href="#kontakt"
+            <button
+              onClick={onBooking}
               className="w-full py-3 rounded-xl bg-primary text-primary-foreground text-center text-sm font-medium hover:bg-primary/90 transition-all duration-300"
             >
               Jetzt anfragen
-            </a>
+            </button>
           </motion.div>
         </div>
 
@@ -662,7 +715,7 @@ function UeberMich() {
   );
 }
 
-function CTA() {
+function CTA({ onBooking }: { onBooking: () => void }) {
   return (
     <section id="kontakt" className="py-24 md:py-32 relative">
       <div className="absolute inset-0 bg-gradient-to-t from-primary/[0.05] to-transparent pointer-events-none" />
@@ -682,14 +735,14 @@ function CTA() {
             Eine Website, die verkauft, beginnt mit einem Gespräch. Kostenlos. Unverbindlich. Lass uns herausfinden, was für dich möglich ist.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="mailto:kontakt@webwerkstudio.de?subject=Anfrage%20%C3%BCber%20WebwerkStudio&body=Hallo%20Sean-Lucas%2C%0A%0Aich%20habe%20Ihre%20Website%20gesehen%20und%20interessiere%20mich%20f%C3%BCr%20ein%20Webdesign-Projekt.%0A%0ABitte%20kontaktieren%20Sie%20mich%20f%C3%BCr%20ein%20unverbindliches%20Beratungsgespr%C3%A4ch.%0A%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0A"
-              rel="noopener noreferrer"
+            <button
+              onClick={onBooking}
               className="group inline-flex items-center justify-center gap-2 px-10 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base hover:opacity-90 transition-all glow-box"
             >
-              Per E-Mail anfragen
+              <Calendar size={18} />
+              Beratung buchen
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </button>
             <a
               href="https://wa.me/4915221798780?text=Hallo%20Sean-Lucas%2C%20ich%20habe%20Ihre%20Website%20gesehen%20und%20interessiere%20mich%20f%C3%BCr%20ein%20Webdesign-Projekt.%20K%C3%B6nnen%20wir%20uns%20kurz%20austauschen%3F"
               target="_blank"
@@ -731,19 +784,22 @@ function Footer() {
 }
 
 export default function Index() {
+  const [schedulerOpen, setSchedulerOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      <Navbar onBooking={() => setSchedulerOpen(true)} />
       <main>
-        <Hero />
+        <Hero onBooking={() => setSchedulerOpen(true)} />
         <Leistungen />
-        <Pakete />
+        <Pakete onBooking={() => setSchedulerOpen(true)} />
         <Ablauf />
         <ReferenzenPreview />
         <UeberMich />
-        <CTA />
+        <CTA onBooking={() => setSchedulerOpen(true)} />
       </main>
       <Footer />
+      <ZoomSchedulerModal open={schedulerOpen} onClose={() => setSchedulerOpen(false)} />
     </div>
   );
 }
